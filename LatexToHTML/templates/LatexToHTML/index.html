@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"  href="{%  static  'css/style.css'  %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <title>LaTeX to HTML</title>
+    </head>
+  <body>
+    <header class="page-header">
+        <h1>LaTeX to HTML for wordpress</h1>
+    </header>
+    <div class="row" id="body">
+      <div class="col-md-1">
+      </div>
+      <div id="left-LaTex" class="col-md-5">
+        <div class="row">
+          <div class="col-md-11">
+            <form class="" action="{% url 'index' %}" method="post">
+              {% csrf_token %}
+              <textarea id="ti" class="form-control" name="tex-input" rows="15" placeholder="Introduce el código LaTeX aquí.">{{ latex }}</textarea>
+              <select class="form-control", name="type">
+                <option value="Article">Artículo</option>
+                <option value="Comment">Comentario</option>
+              </select>
+              <button class="btn btn-default" type="submit" name="button">Convertir</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="right-HTML" class="col-md-5">
+        <div class="row">
+          <textarea id="ti" class="form-control" rows="15" placeholder="Aquí se mostrará el código HTML.">{{ html }}</textarea>
+        </div>
+        <div class="row">
+            <button class="btn btn-default" type="submit" name="button">Seleccionar todo</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
